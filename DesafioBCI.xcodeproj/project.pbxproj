@@ -9,12 +9,19 @@
 /* Begin PBXBuildFile section */
 		209676B724106A6E002956C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209676B624106A6E002956C6 /* AppDelegate.swift */; };
 		209676B924106A6E002956C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209676B824106A6E002956C6 /* SceneDelegate.swift */; };
-		209676BB24106A6E002956C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209676BA24106A6E002956C6 /* ViewController.swift */; };
 		209676BE24106A6E002956C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 209676BC24106A6E002956C6 /* Main.storyboard */; };
 		209676C024106A76002956C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 209676BF24106A76002956C6 /* Assets.xcassets */; };
 		209676C324106A76002956C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 209676C124106A76002956C6 /* LaunchScreen.storyboard */; };
 		209676CE24106A76002956C6 /* DesafioBCITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209676CD24106A76002956C6 /* DesafioBCITests.swift */; };
 		209676D924106A77002956C6 /* DesafioBCIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209676D824106A77002956C6 /* DesafioBCIUITests.swift */; };
+		209676E824106DC1002956C6 /* ObtenerDatos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209676E724106DC1002956C6 /* ObtenerDatos.swift */; };
+		209676EB24106E11002956C6 /* CancionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209676EA24106E11002956C6 /* CancionModel.swift */; };
+		209676F524106E7E002956C6 /* BuscarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209676EF24106E7E002956C6 /* BuscarPresenter.swift */; };
+		209676F624106E7E002956C6 /* BuscarWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209676F024106E7E002956C6 /* BuscarWorker.swift */; };
+		209676F724106E7E002956C6 /* BuscarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209676F124106E7E002956C6 /* BuscarRouter.swift */; };
+		209676F824106E7E002956C6 /* BuscarModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209676F224106E7E002956C6 /* BuscarModels.swift */; };
+		209676F924106E7E002956C6 /* BuscarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209676F324106E7E002956C6 /* BuscarViewController.swift */; };
+		209676FA24106E7E002956C6 /* BuscarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209676F424106E7E002956C6 /* BuscarInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +45,6 @@
 		209676B324106A6E002956C6 /* DesafioBCI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioBCI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		209676B624106A6E002956C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		209676B824106A6E002956C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		209676BA24106A6E002956C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		209676BD24106A6E002956C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		209676BF24106A76002956C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		209676C224106A76002956C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +55,14 @@
 		209676D424106A76002956C6 /* DesafioBCIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DesafioBCIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		209676D824106A77002956C6 /* DesafioBCIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesafioBCIUITests.swift; sourceTree = "<group>"; };
 		209676DA24106A77002956C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		209676E724106DC1002956C6 /* ObtenerDatos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObtenerDatos.swift; sourceTree = "<group>"; };
+		209676EA24106E11002956C6 /* CancionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancionModel.swift; sourceTree = "<group>"; };
+		209676EF24106E7E002956C6 /* BuscarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscarPresenter.swift; sourceTree = "<group>"; };
+		209676F024106E7E002956C6 /* BuscarWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscarWorker.swift; sourceTree = "<group>"; };
+		209676F124106E7E002956C6 /* BuscarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscarRouter.swift; sourceTree = "<group>"; };
+		209676F224106E7E002956C6 /* BuscarModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscarModels.swift; sourceTree = "<group>"; };
+		209676F324106E7E002956C6 /* BuscarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscarViewController.swift; sourceTree = "<group>"; };
+		209676F424106E7E002956C6 /* BuscarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscarInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +113,10 @@
 		209676B524106A6E002956C6 /* DesafioBCI */ = {
 			isa = PBXGroup;
 			children = (
+				209676EC24106E58002956C6 /* Scenes */,
+				209676E624106DAC002956C6 /* Get API */,
 				209676B624106A6E002956C6 /* AppDelegate.swift */,
 				209676B824106A6E002956C6 /* SceneDelegate.swift */,
-				209676BA24106A6E002956C6 /* ViewController.swift */,
 				209676BC24106A6E002956C6 /* Main.storyboard */,
 				209676BF24106A76002956C6 /* Assets.xcassets */,
 				209676C124106A76002956C6 /* LaunchScreen.storyboard */,
@@ -126,6 +141,52 @@
 				209676DA24106A77002956C6 /* Info.plist */,
 			);
 			path = DesafioBCIUITests;
+			sourceTree = "<group>";
+		};
+		209676E624106DAC002956C6 /* Get API */ = {
+			isa = PBXGroup;
+			children = (
+				209676E724106DC1002956C6 /* ObtenerDatos.swift */,
+				209676E924106E06002956C6 /* Model */,
+			);
+			path = "Get API";
+			sourceTree = "<group>";
+		};
+		209676E924106E06002956C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				209676EA24106E11002956C6 /* CancionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		209676EC24106E58002956C6 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				209676EE24106E63002956C6 /* Buscar */,
+				209676ED24106E5F002956C6 /* Album */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		209676ED24106E5F002956C6 /* Album */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Album;
+			sourceTree = "<group>";
+		};
+		209676EE24106E63002956C6 /* Buscar */ = {
+			isa = PBXGroup;
+			children = (
+				209676EF24106E7E002956C6 /* BuscarPresenter.swift */,
+				209676F024106E7E002956C6 /* BuscarWorker.swift */,
+				209676F124106E7E002956C6 /* BuscarRouter.swift */,
+				209676F224106E7E002956C6 /* BuscarModels.swift */,
+				209676F324106E7E002956C6 /* BuscarViewController.swift */,
+				209676F424106E7E002956C6 /* BuscarInteractor.swift */,
+			);
+			path = Buscar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +320,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				209676BB24106A6E002956C6 /* ViewController.swift in Sources */,
+				209676FA24106E7E002956C6 /* BuscarInteractor.swift in Sources */,
+				209676F924106E7E002956C6 /* BuscarViewController.swift in Sources */,
 				209676B724106A6E002956C6 /* AppDelegate.swift in Sources */,
+				209676F824106E7E002956C6 /* BuscarModels.swift in Sources */,
+				209676EB24106E11002956C6 /* CancionModel.swift in Sources */,
+				209676E824106DC1002956C6 /* ObtenerDatos.swift in Sources */,
+				209676F724106E7E002956C6 /* BuscarRouter.swift in Sources */,
+				209676F524106E7E002956C6 /* BuscarPresenter.swift in Sources */,
 				209676B924106A6E002956C6 /* SceneDelegate.swift in Sources */,
+				209676F624106E7E002956C6 /* BuscarWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,7 +512,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dev-jo.DesafioBCI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -462,7 +530,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dev-jo.DesafioBCI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
