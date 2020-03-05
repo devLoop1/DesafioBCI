@@ -12,78 +12,179 @@
 
 import UIKit
 
-protocol BuscarDisplayLogic: class
-{
-  func displaySomething(viewModel: Buscar.Something.ViewModel)
+protocol BuscarDisplayLogic: class {
+    func displayInitialData(viewModel: Buscar.Load.ViewModel)
 }
 
-class BuscarViewController: UIViewController, BuscarDisplayLogic
-{
-  var interactor: BuscarBusinessLogic?
-  var router: (NSObjectProtocol & BuscarRoutingLogic & BuscarDataPassing)?
-
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup()
-  {
-    let viewController = self
-    let interactor = BuscarInteractor()
-    let presenter = BuscarPresenter()
-    let router = BuscarRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
+class BuscarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, BuscarDisplayLogic {
+    
+    
+    var interactor: BuscarBusinessLogic?
+    var router: (NSObjectProtocol & BuscarRoutingLogic & BuscarDataPassing)?
+    
+    // MARK: Object lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
     }
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-    doSomething()
-  }
-  
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
-    let request = Buscar.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: Buscar.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    // MARK: Setup
+    
+    private func setup() {
+        let viewController = self
+        let interactor = BuscarInteractor()
+        let presenter = BuscarPresenter()
+        let router = BuscarRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
+    
+    // MARK: Routing
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let scene = segue.identifier {
+            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router, router.responds(to: selector) {
+                router.perform(selector, with: segue)
+            }
+        }
+    }
+    
+    
+    // MARK: Componentes view
+    
+    @IBOutlet weak var searchbarOutlet: UISearchBar!
+    @IBOutlet weak var tableViewOutlet: UITableView!
+    
+    // MARK: Variables
+    
+    var arrayCanciones = [CancionModel]()
+    
+    // identificador cell tableview canciones
+    let cellIdentifier = "cellCanciones"
+    
+    // limite de datos a mostrar en tableview
+    var limiteCanciones = 20
+    
+    
+    
+    // MARK: View lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loadInitialData()
+        
+        custom()
+    }
+    
+    // MARK: Do something
+    
+    //@IBOutlet weak var nameText Field: UITextField!
+    
+    func loadInitialData() {
+        let request = Buscar.Load.Request()
+        interactor?.doLoadInitialData(request: request)
+    }
+    
+    func displayInitialData(viewModel: Buscar.Load.ViewModel) {
+        //nameTextField.text = viewModel.name
+        
+    }
+    
+    // MARK: Tableview
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayCanciones.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableViewOutlet.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        let canciones = arrayCanciones[indexPath.row]
+        
+        cell.textLabel?.text = canciones.trackName
+        cell.detailTextLabel?.text = canciones.artistName
+        
+        return cell
+    }
+    
+    
+    
+    // MARK: Buscar mas
+    var fetchingMore = false
+    
+    // detectar desplazamiento hasta la parte inferior
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHight = scrollView.contentSize.height
+        
+        if offsetY > contentHight - scrollView.frame.height {
+            if !fetchingMore {
+                buscarMas()
+            }
+        }
+    }
+    
+    func buscarMas(){
+        fetchingMore = true
+        print("buscarmas")
+        
+        let numeroCanciones = arrayCanciones.count
+        ObtenerDatos.instance.getCanciones(searchRequest: self.searchbarOutlet.text!, limite: numeroCanciones + 20) { (requestedCanciones) in
+            self.arrayCanciones = requestedCanciones//.sorted(by: {$0.trackName < $1.trackName})
+            
+            DispatchQueue.main.async {
+                
+                self.fetchingMore = false
+                self.tableViewOutlet.reloadData()
+            }
+        }
+        
+    }
+    
+    // MARK: SarchBar
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if searchbarOutlet.text != nil || searchbarOutlet.text != "" {
+            ObtenerDatos.instance.getCanciones(searchRequest: searchbarOutlet.text!, limite: 20) { (requestedCanciones) in
+                
+                self.arrayCanciones = requestedCanciones//.sorted(by: {$0.trackName < $1.trackName})
+                
+                DispatchQueue.main.async {
+                    
+                    // Busqueda obtuvo resultados
+                    if self.arrayCanciones.count != 0{
+                        self.tableViewOutlet.reloadData()
+                    }else{
+                        // Busqueda sin resultados
+                        if self.searchbarOutlet.text != "" {
+                            self.tableViewOutlet.reloadData()
+//                            self.view.makeToast("Termino no encontrado")
+                            print("Termino no encontrado")
+                        }else{
+                            self.tableViewOutlet.reloadData()
+                        }
+                    }
+                    
+                }
+            }
+        }
+        searchbarOutlet.resignFirstResponder()
+    }// SearchBar
+    
+    // MARK: Custom
+    
+    func custom(){
+        //searchbar sin bordes
+        searchbarOutlet.backgroundImage = UIImage()
+        
+    }
 }

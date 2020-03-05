@@ -12,30 +12,28 @@
 
 import UIKit
 
-protocol BuscarBusinessLogic
-{
-  func doSomething(request: Buscar.Something.Request)
+protocol BuscarBusinessLogic {
+    func doLoadInitialData(request: Buscar.Load.Request)
 }
 
-protocol BuscarDataStore
-{
-  //var name: String { get set }
+protocol BuscarDataStore {
+    //var name: String { get set }
 }
 
-class BuscarInteractor: BuscarBusinessLogic, BuscarDataStore
-{
-  var presenter: BuscarPresentationLogic?
-  var worker: BuscarWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Buscar.Something.Request)
-  {
-    worker = BuscarWorker()
-    worker?.doSomeWork()
+class BuscarInteractor: BuscarBusinessLogic, BuscarDataStore {
+    var presenter: BuscarPresentationLogic?
+    var worker: BuscarWorker?
     
-    let response = Buscar.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    
+    // MARK: Do something
+    
+    func doLoadInitialData(request: Buscar.Load.Request) {
+        worker = BuscarWorker()
+        worker?.doSomeWork()
+        
+        let response = Buscar.Load.Response()
+        self.presenter?.presentInitialData(response: response)
+        
+        
+    }
 }

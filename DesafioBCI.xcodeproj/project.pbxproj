@@ -113,8 +113,8 @@
 		209676B524106A6E002956C6 /* DesafioBCI */ = {
 			isa = PBXGroup;
 			children = (
-				209676EC24106E58002956C6 /* Scenes */,
 				209676E624106DAC002956C6 /* Get API */,
+				209676EC24106E58002956C6 /* Scenes */,
 				209676B624106A6E002956C6 /* AppDelegate.swift */,
 				209676B824106A6E002956C6 /* SceneDelegate.swift */,
 				209676BC24106A6E002956C6 /* Main.storyboard */,

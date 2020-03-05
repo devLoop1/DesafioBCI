@@ -12,20 +12,17 @@
 
 import UIKit
 
-protocol BuscarPresentationLogic
-{
-  func presentSomething(response: Buscar.Something.Response)
+protocol BuscarPresentationLogic {
+    func presentInitialData(response: Buscar.Load.Response)
 }
 
-class BuscarPresenter: BuscarPresentationLogic
-{
-  weak var viewController: BuscarDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: Buscar.Something.Response)
-  {
-    let viewModel = Buscar.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+class BuscarPresenter: BuscarPresentationLogic {
+    weak var viewController: BuscarDisplayLogic?
+    
+    // MARK: Do something
+    
+    func presentInitialData(response: Buscar.Load.Response) {
+        let viewModel = Buscar.Load.ViewModel()
+        viewController?.displayInitialData(viewModel: viewModel)
+    }
 }
