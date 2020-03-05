@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,8 @@
 		2090201A2410A82B00484194 /* AlbumModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209020142410A82B00484194 /* AlbumModels.swift */; };
 		2090201B2410A82B00484194 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209020152410A82B00484194 /* AlbumViewController.swift */; };
 		2090201C2410A82B00484194 /* AlbumInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209020162410A82B00484194 /* AlbumInteractor.swift */; };
+		2090201E2410BC3300484194 /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2090201D2410BC3300484194 /* AlbumModel.swift */; };
+		209020212410F3A100484194 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 209020202410F3A100484194 /* Toast */; };
 		209676B724106A6E002956C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209676B624106A6E002956C6 /* AppDelegate.swift */; };
 		209676B924106A6E002956C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209676B824106A6E002956C6 /* SceneDelegate.swift */; };
 		209676BE24106A6E002956C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 209676BC24106A6E002956C6 /* Main.storyboard */; };
@@ -54,6 +56,7 @@
 		209020142410A82B00484194 /* AlbumModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModels.swift; sourceTree = "<group>"; };
 		209020152410A82B00484194 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		209020162410A82B00484194 /* AlbumInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInteractor.swift; sourceTree = "<group>"; };
+		2090201D2410BC3300484194 /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
 		209676B324106A6E002956C6 /* DesafioBCI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioBCI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		209676B624106A6E002956C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		209676B824106A6E002956C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				209020212410F3A100484194 /* Toast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				209676EA24106E11002956C6 /* CancionModel.swift */,
+				2090201D2410BC3300484194 /* AlbumModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -223,6 +228,9 @@
 			dependencies = (
 			);
 			name = DesafioBCI;
+			packageProductDependencies = (
+				209020202410F3A100484194 /* Toast */,
+			);
 			productName = DesafioBCI;
 			productReference = 209676B324106A6E002956C6 /* DesafioBCI.app */;
 			productType = "com.apple.product-type.application";
@@ -295,6 +303,9 @@
 				Base,
 			);
 			mainGroup = 209676AA24106A6E002956C6;
+			packageReferences = (
+				2090201F2410F3A100484194 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+			);
 			productRefGroup = 209676B424106A6E002956C6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -350,6 +361,7 @@
 				209020182410A82B00484194 /* AlbumWorker.swift in Sources */,
 				209676F724106E7E002956C6 /* BuscarRouter.swift in Sources */,
 				209676F524106E7E002956C6 /* BuscarPresenter.swift in Sources */,
+				2090201E2410BC3300484194 /* AlbumModel.swift in Sources */,
 				2090201C2410A82B00484194 /* AlbumInteractor.swift in Sources */,
 				209020192410A82B00484194 /* AlbumRouter.swift in Sources */,
 				209676B924106A6E002956C6 /* SceneDelegate.swift in Sources */,
@@ -682,6 +694,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2090201F2410F3A100484194 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		209020202410F3A100484194 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2090201F2410F3A100484194 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 209676AB24106A6E002956C6 /* Project object */;
 }

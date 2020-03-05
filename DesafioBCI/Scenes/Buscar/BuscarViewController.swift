@@ -80,7 +80,6 @@ class BuscarViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var limiteCanciones = 20
     
     
-    
     // MARK: View lifecycle
     
     override func viewDidLoad() {
@@ -100,7 +99,6 @@ class BuscarViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func displayInitialData(viewModel: Buscar.Load.ViewModel) {
-        //nameTextField.text = viewModel.name
         
     }
     
@@ -124,6 +122,7 @@ class BuscarViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    // seleccion item tableview
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cancion = arrayCanciones[indexPath.row]
         
@@ -147,6 +146,8 @@ class BuscarViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    
+    // cargar otros 20 resultados
     func buscarMas(){
         fetchingMore = true
         print("buscarmas")
@@ -180,8 +181,7 @@ class BuscarViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         // Busqueda sin resultados
                         if self.searchbarOutlet.text != "" {
                             self.tableViewOutlet.reloadData()
-                            //                            self.view.makeToast("Termino no encontrado")
-                            print("Termino no encontrado")
+                            self.view.makeToast("Termino no encontrado")
                         }else{
                             self.tableViewOutlet.reloadData()
                         }
@@ -192,6 +192,7 @@ class BuscarViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         searchbarOutlet.resignFirstResponder()
     }// SearchBar
+    
     
     // MARK: Custom
     

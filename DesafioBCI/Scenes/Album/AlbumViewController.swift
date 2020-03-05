@@ -12,87 +12,154 @@
 
 import UIKit
 
-protocol AlbumDisplayLogic: class
-{
-  func displaySomething(viewModel: Album.Something.ViewModel)
+protocol AlbumDisplayLogic: class {
+    func displayInitialData(viewModel: Album.Load.ViewModel)
+    
+    
 }
 
-class AlbumViewController: UIViewController, AlbumDisplayLogic
-{
-  var interactor: AlbumBusinessLogic?
-  var router: (NSObjectProtocol & AlbumRoutingLogic & AlbumDataPassing)?
+struct AlbumData {
+    var albumName: String
+    var artistName: String
+    var artWorkUrl: String
+}
 
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup()
-  {
-    let viewController = self
-    let interactor = AlbumInteractor()
-    let presenter = AlbumPresenter()
-    let router = AlbumRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
+class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AlbumDisplayLogic {
+    
+    
+    var interactor: AlbumBusinessLogic?
+    var router: (NSObjectProtocol & AlbumRoutingLogic & AlbumDataPassing)?
+    
+    // MARK: Object lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
     }
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
     
-    print("Print: \(router?.dataStore?.collectionID ?? 0)")
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
     
-    let navigationBarAppearace = UINavigationBar.appearance()
-
-    navigationBarAppearace.tintColor = .green
+    // MARK: Setup
+    
+    private func setup() {
+        let viewController = self
+        let interactor = AlbumInteractor()
+        let presenter = AlbumPresenter()
+        let router = AlbumRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
+    
+    // MARK: Routing
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let scene = segue.identifier {
+            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router, router.responds(to: selector) {
+                router.perform(selector, with: segue)
+            }
+        }
+    }
+    
+    // MARK: Componentes view
+    @IBOutlet weak var albumImage: UIImageView!
+    @IBOutlet weak var nombreAlbum: UILabel!
+    @IBOutlet weak var nombreArtista: UILabel!
+    @IBOutlet weak var numeroCanciones: UILabel!
+    @IBOutlet weak var tableViewOutlet: UITableView!
     
     
+    // MARK: Variables
+    var arrayAlbum = [AlbumModel]()
     
-    doSomething()
-  }
-  
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
-    let request = Album.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: Album.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+    var nombreAlbumVar = ""
+    var nombreArtistaVar = ""
+    var artWorkVar = ""
+    var numeroCancionesVar = 0
+    //    var collectionID = router?.dataStore?.collectionID
+    
+    // MARK: View lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        loadInitialData()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        nombreArtista.text = nombreArtistaVar
+        nombreAlbum.text = nombreAlbumVar
+        numeroCanciones.text = "Numero de canciones: \(numeroCancionesVar)"
+        
+        cargarArtWork()
+    }
+    
+    // MARK: Do something
+    
+    //@IBOutlet weak var nameTextField: UITextField!
+    
+    
+    func loadInitialData() {
+        let request = Album.Load.Request()
+        interactor?.doLoadInitialData(request: request)
+    }
+    
+    func displayInitialData(viewModel: Album.Load.ViewModel) {
+        
+        arrayAlbum = viewModel.album
+        
+        for dataAlbum in arrayAlbum{
+            nombreArtistaVar = dataAlbum.artistName
+            nombreAlbumVar = dataAlbum.collectionName
+            artWorkVar = dataAlbum.artworkUrl100
+            numeroCancionesVar = dataAlbum.trackCount
+            
+        }
+        
+        
+    }
+    
+    // MARK: Tableview
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return numeroCancionesVar
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableViewOutlet.dequeueReusableCell(withIdentifier: "cellCancionesAlbum", for: indexPath)
+        
+        cell.textLabel?.text = "Cancion"
+        
+        return cell
+        
+    }
+    
+    // MARK: Cargar Artwork
+    func cargarArtWork(){
+        
+        if let url = URL(string: artWorkVar) {
+            
+            do {
+                let data = try Data(contentsOf: url)
+                
+                self.albumImage.image = UIImage(data: data)
+                
+            } catch let err {
+                print("Error : \(err.localizedDescription)")
+            }
+            
+            
+        }
+        
+    }
+    
 }

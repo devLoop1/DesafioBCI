@@ -12,9 +12,16 @@
 
 import UIKit
 
-class AlbumWorker
-{
-  func doSomeWork()
-  {
-  }
+class AlbumWorker {
+    func doSomeWork()  {
+        
+    }
+    
+    func fetchAlbum(id: Int, completionHandler: @escaping ([AlbumModel]) -> Void) {
+        
+        ObtenerDatos.instance.getAlbum(id: id) { album in
+            completionHandler(album)
+        }
+        
+    }
 }

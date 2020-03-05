@@ -12,20 +12,17 @@
 
 import UIKit
 
-enum Album
-{
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
-    {
+enum Album {
+    // MARK: Use cases
+    
+    enum Load {
+        struct Request {
+        }
+        struct Response {
+            let album: [AlbumModel]
+        }
+        struct ViewModel {
+            let album: [AlbumModel]
+        }
     }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-    }
-  }
 }

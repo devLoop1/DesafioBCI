@@ -12,30 +12,31 @@
 
 import UIKit
 
-protocol AlbumBusinessLogic
-{
-  func doSomething(request: Album.Something.Request)
+protocol AlbumBusinessLogic {
+    func doLoadInitialData(request: Album.Load.Request)
 }
 
-protocol AlbumDataStore
-{
-  var collectionID: Int { get set }
+protocol AlbumDataStore {
+    var collectionID: Int { get set }
 }
 
-class AlbumInteractor: AlbumBusinessLogic, AlbumDataStore
-{
-  var presenter: AlbumPresentationLogic?
-  var worker: AlbumWorker?
-  var collectionID: Int = 0
-  
-  // MARK: Do something
-  
-  func doSomething(request: Album.Something.Request)
-  {
-    worker = AlbumWorker()
-    worker?.doSomeWork()
+class AlbumInteractor: AlbumBusinessLogic, AlbumDataStore {
+    var presenter: AlbumPresentationLogic?
+    var worker: AlbumWorker?
+    var collectionID: Int = 0
     
-    let response = Album.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    // MARK: Do something
+    
+    func doLoadInitialData(request: Album.Load.Request)   {
+        worker = AlbumWorker()
+        worker?.fetchAlbum(id: collectionID, completionHandler: { album in
+            
+            let response = Album.Load.Response(album: album)
+            self.presenter?.presentInitialData(response: response)
+            
+        })
+        
+        
+    }
+    
 }

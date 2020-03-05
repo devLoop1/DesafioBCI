@@ -12,20 +12,17 @@
 
 import UIKit
 
-protocol AlbumPresentationLogic
-{
-  func presentSomething(response: Album.Something.Response)
+protocol AlbumPresentationLogic {
+    func presentInitialData(response: Album.Load.Response)
 }
 
-class AlbumPresenter: AlbumPresentationLogic
-{
-  weak var viewController: AlbumDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: Album.Something.Response)
-  {
-    let viewModel = Album.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+class AlbumPresenter: AlbumPresentationLogic {
+    weak var viewController: AlbumDisplayLogic?
+    
+    // MARK: Do something
+    
+    func presentInitialData(response: Album.Load.Response) {
+        let viewModel = Album.Load.ViewModel(album: response.album)
+        viewController?.displayInitialData(viewModel: viewModel)
+    }
 }
