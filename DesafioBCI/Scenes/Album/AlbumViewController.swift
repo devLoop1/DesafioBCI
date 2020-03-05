@@ -134,6 +134,10 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
+    
+    // MARK: ItemBar cerrar view
+
+    
     // MARK: Tableview
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

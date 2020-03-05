@@ -98,8 +98,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r6r-ze-adN">
+                                <rect key="frame" x="0.0" y="223" width="414" height="639"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellCancionesAlbum" textLabel="cmc-uD-7kC" style="IBUITableViewCellStyleDefault" id="Be1-Hy-v2R">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Be1-Hy-v2R" id="Sxc-hw-S8q">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cmc-uD-7kC">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="boj-DD-zsp" id="NLV-5W-hDw"/>
+                                    <outlet property="delegate" destination="boj-DD-zsp" id="aNS-Ea-taZ"/>
+                                </connections>
+                            </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GGh-mO-dTs">
-                                <rect key="frame" x="20" y="91" width="374" height="138"/>
+                                <rect key="frame" x="20" y="77" width="374" height="138"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Pbs-7P-ahS">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
@@ -147,54 +174,16 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.compact.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mZk-Hf-0hD">
-                                <rect key="frame" x="20" y="56.5" width="374" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="33.5" id="Nt0-Nv-iJf"/>
-                                </constraints>
-                            </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r6r-ze-adN">
-                                <rect key="frame" x="0.0" y="237" width="414" height="625"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellCancionesAlbum" textLabel="cmc-uD-7kC" style="IBUITableViewCellStyleDefault" id="Be1-Hy-v2R">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Be1-Hy-v2R" id="Sxc-hw-S8q">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cmc-uD-7kC">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="boj-DD-zsp" id="NLV-5W-hDw"/>
-                                    <outlet property="delegate" destination="boj-DD-zsp" id="aNS-Ea-taZ"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="GGh-mO-dTs" firstAttribute="leading" secondItem="veR-3j-1GP" secondAttribute="leading" constant="20" id="1WW-6B-4f7"/>
+                            <constraint firstItem="GGh-mO-dTs" firstAttribute="top" secondItem="veR-3j-1GP" secondAttribute="top" constant="33" id="7Ma-QS-jeG"/>
                             <constraint firstItem="r6r-ze-adN" firstAttribute="leading" secondItem="veR-3j-1GP" secondAttribute="leading" id="7gE-eh-FTU"/>
                             <constraint firstItem="GGh-mO-dTs" firstAttribute="leading" secondItem="veR-3j-1GP" secondAttribute="leading" constant="20" id="G4J-qY-nkp"/>
-                            <constraint firstItem="mZk-Hf-0hD" firstAttribute="leading" secondItem="veR-3j-1GP" secondAttribute="leading" constant="20" id="IWJ-lQ-rsw"/>
-                            <constraint firstItem="GGh-mO-dTs" firstAttribute="top" secondItem="mZk-Hf-0hD" secondAttribute="bottom" constant="7.5" id="OI6-IB-ycL"/>
-                            <constraint firstItem="mZk-Hf-0hD" firstAttribute="top" secondItem="veR-3j-1GP" secondAttribute="top" constant="6" id="ZIl-v6-9dc"/>
                             <constraint firstItem="r6r-ze-adN" firstAttribute="top" secondItem="GGh-mO-dTs" secondAttribute="bottom" constant="8" id="ZUS-AM-abU"/>
-                            <constraint firstItem="GGh-mO-dTs" firstAttribute="top" secondItem="mZk-Hf-0hD" secondAttribute="bottom" constant="7.5" id="biN-nh-cqy"/>
-                            <constraint firstItem="veR-3j-1GP" firstAttribute="trailing" secondItem="mZk-Hf-0hD" secondAttribute="trailing" constant="20" id="cHG-bY-VtT"/>
                             <constraint firstItem="veR-3j-1GP" firstAttribute="trailing" secondItem="GGh-mO-dTs" secondAttribute="trailing" constant="20" id="faq-Cv-xUn"/>
                             <constraint firstItem="r6r-ze-adN" firstAttribute="trailing" secondItem="veR-3j-1GP" secondAttribute="trailing" id="iba-oM-3Or"/>
-                            <constraint firstItem="GGh-mO-dTs" firstAttribute="top" secondItem="mZk-Hf-0hD" secondAttribute="bottom" constant="7.5" id="shc-dX-1ea"/>
                             <constraint firstItem="veR-3j-1GP" firstAttribute="trailing" secondItem="GGh-mO-dTs" secondAttribute="trailing" constant="20" id="vwx-B3-4So"/>
                             <constraint firstItem="r6r-ze-adN" firstAttribute="bottom" secondItem="veR-3j-1GP" secondAttribute="bottom" id="wRw-4o-8u1"/>
                         </constraints>
@@ -235,6 +224,5 @@
     </scenes>
     <resources>
         <image name="book.fill" catalog="system" width="64" height="50"/>
-        <image name="chevron.compact.down" catalog="system" width="64" height="20"/>
     </resources>
 </document>
