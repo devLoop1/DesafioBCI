@@ -14,9 +14,12 @@ import UIKit
 
 protocol BuscarDisplayLogic: class {
     func displayInitialData(viewModel: Buscar.Load.ViewModel)
+    func displayAlbums(viewModel: Buscar.Albums.ViewModel)
 }
 
 class BuscarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, BuscarDisplayLogic {
+    
+    
     
     
     var interactor: BuscarBusinessLogic?
@@ -101,6 +104,10 @@ class BuscarViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
     
+    func displayAlbums(viewModel: Buscar.Albums.ViewModel) {
+        router?.routeToSomewhere(segue: nil)
+    }
+    
     // MARK: Tableview
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -117,6 +124,12 @@ class BuscarViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cancion = arrayCanciones[indexPath.row]
+        
+        let request = Buscar.Albums.Request(post: cancion)
+        interactor?.doLoadAlbum(request: request)
+    }
     
     
     // MARK: Buscar mas
@@ -167,7 +180,7 @@ class BuscarViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         // Busqueda sin resultados
                         if self.searchbarOutlet.text != "" {
                             self.tableViewOutlet.reloadData()
-//                            self.view.makeToast("Termino no encontrado")
+                            //                            self.view.makeToast("Termino no encontrado")
                             print("Termino no encontrado")
                         }else{
                             self.tableViewOutlet.reloadData()

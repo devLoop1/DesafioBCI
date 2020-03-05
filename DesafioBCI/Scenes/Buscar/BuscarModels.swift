@@ -16,11 +16,29 @@ enum Buscar {
     // MARK: Use cases
     
     enum Load {
-        struct Request { 
+        struct Request {
+            
         }
         struct Response {
+            
         }
         struct ViewModel {
+            
         }
     }
+    
+    
+    enum Albums {
+        struct Request {
+            let post: CancionModel
+        }
+        struct Response {
+            
+        }
+        struct ViewModel {
+            
+        }
+    }
+    
+    
 }

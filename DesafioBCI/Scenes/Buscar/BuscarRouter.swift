@@ -13,7 +13,7 @@
 import UIKit
 
 @objc protocol BuscarRoutingLogic {
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToSomewhere(segue: UIStoryboardSegue?)
 }
 
 protocol BuscarDataPassing {
@@ -21,8 +21,19 @@ protocol BuscarDataPassing {
 }
 
 class BuscarRouter: NSObject, BuscarRoutingLogic, BuscarDataPassing {
+    
+    
     weak var viewController: BuscarViewController?
     var dataStore: BuscarDataStore?
+    
+    func routeToSomewhere(segue: UIStoryboardSegue?) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "AlbumViewController") as! AlbumViewController
+        var destinationDS = destinationVC.router!.dataStore!
+        passDataToAlbum(source: dataStore!, destination: &destinationDS)
+        navigateToAlbum(source: viewController!, destination: destinationVC)
+    }
+    
     
     // MARK: Routing
     
@@ -43,15 +54,16 @@ class BuscarRouter: NSObject, BuscarRoutingLogic, BuscarDataPassing {
     
     // MARK: Navigation
     
-    //func navigateToSomewhere(source: BuscarViewController, destination: SomewhereViewController)
-    //{
-    //  source.show(destination, sender: nil)
-    //}
+    func navigateToAlbum(source: BuscarViewController, destination: AlbumViewController) {
+        source.showDetailViewController(destination, sender: nil)
+    }
     
-    // MARK: Passing data
+    //     MARK: Passing data
     
-    //func passDataToSomewhere(source: BuscarDataStore, destination: inout SomewhereDataStore)
-    //{
-    //  destination.name = source.name
-    //}
+    func passDataToAlbum(source: BuscarDataStore, destination: inout AlbumDataStore) {
+//        destination. = source.name
+        
+        destination.collectionID = source.collectionID
+        
+    }
 }

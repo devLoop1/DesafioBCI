@@ -14,9 +14,12 @@ import UIKit
 
 protocol BuscarPresentationLogic {
     func presentInitialData(response: Buscar.Load.Response)
+    func presentAlbums(response: Buscar.Albums.Response)
 }
 
 class BuscarPresenter: BuscarPresentationLogic {
+    
+    
     weak var viewController: BuscarDisplayLogic?
     
     // MARK: Do something
@@ -24,5 +27,10 @@ class BuscarPresenter: BuscarPresentationLogic {
     func presentInitialData(response: Buscar.Load.Response) {
         let viewModel = Buscar.Load.ViewModel()
         viewController?.displayInitialData(viewModel: viewModel)
+    }
+    
+    func presentAlbums(response: Buscar.Albums.Response) {
+        let viewModel = Buscar.Albums.ViewModel()
+        viewController?.displayAlbums(viewModel: viewModel)
     }
 }

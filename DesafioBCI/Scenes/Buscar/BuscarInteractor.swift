@@ -14,16 +14,20 @@ import UIKit
 
 protocol BuscarBusinessLogic {
     func doLoadInitialData(request: Buscar.Load.Request)
+    func doLoadAlbum(request: Buscar.Albums.Request)
 }
 
 protocol BuscarDataStore {
-    //var name: String { get set }
+    var collectionID: Int { get set }
 }
 
 class BuscarInteractor: BuscarBusinessLogic, BuscarDataStore {
+    
+    
     var presenter: BuscarPresentationLogic?
     var worker: BuscarWorker?
     
+    var collectionID: Int = 0
     
     // MARK: Do something
     
@@ -36,4 +40,15 @@ class BuscarInteractor: BuscarBusinessLogic, BuscarDataStore {
         
         
     }
+    
+    func doLoadAlbum(request: Buscar.Albums.Request) {
+        let cancion = request.post
+        collectionID = cancion.collectionId
+        
+        let response = Buscar.Albums.Response()
+        
+        presenter?.presentAlbums(response: response)
+    }
+    
+    
 }
