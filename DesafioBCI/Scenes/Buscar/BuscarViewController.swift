@@ -94,6 +94,16 @@ class BuscarViewController: UIViewController, UITableViewDelegate, UITableViewDa
         conexionInternet()
     }
     
+    
+    // MARK: Item Bar NAvigationbar
+    @IBAction func limpiarBusqueda(_ sender: UIBarButtonItem) {
+        
+        searchbarOutlet.text = ""
+        arrayCanciones.removeAll()
+        tableViewOutlet.reloadData()
+    }
+    
+    
     // MARK: Do something
     
     //@IBOutlet weak var nameText Field: UITextField!
