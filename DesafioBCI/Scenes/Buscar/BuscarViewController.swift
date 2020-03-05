@@ -80,6 +80,9 @@ class BuscarViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var limiteCanciones = 20
     
     
+    var status = Reach().connectionStatus()
+    
+    
     // MARK: View lifecycle
     
     override func viewDidLoad() {
@@ -87,6 +90,8 @@ class BuscarViewController: UIViewController, UITableViewDelegate, UITableViewDa
         loadInitialData()
         
         custom()
+        
+        conexionInternet()
     }
     
     // MARK: Do something
@@ -181,7 +186,7 @@ class BuscarViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         // Busqueda sin resultados
                         if self.searchbarOutlet.text != "" {
                             self.tableViewOutlet.reloadData()
-                            self.view.makeToast("Termino no encontrado")
+                            self.view.makeToast("Termino no encontrado", duration: 3.0, position: .bottom)
                         }else{
                             self.tableViewOutlet.reloadData()
                         }
@@ -199,6 +204,21 @@ class BuscarViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func custom(){
         //searchbar sin bordes
         searchbarOutlet.backgroundImage = UIImage()
+        
+    }
+    
+    // MARK: Conexion internet
+    
+    func conexionInternet(){
+        
+        switch status {
+            case .unknown, .offline:
+                self.view.makeToast("Sin conexion a internet", duration: 3.0, position: .bottom)
+            case .online(.wwan):
+                print("Conexion via WWAN")
+            case .online(.wiFi):
+                print("Conexion via WIFI")
+        }
         
     }
 }

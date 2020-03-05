@@ -15,6 +15,7 @@
 		2090201C2410A82B00484194 /* AlbumInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209020162410A82B00484194 /* AlbumInteractor.swift */; };
 		2090201E2410BC3300484194 /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2090201D2410BC3300484194 /* AlbumModel.swift */; };
 		209020212410F3A100484194 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 209020202410F3A100484194 /* Toast */; };
+		209020252410F5F200484194 /* ConexionInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209020242410F5F200484194 /* ConexionInternet.swift */; };
 		209676B724106A6E002956C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209676B624106A6E002956C6 /* AppDelegate.swift */; };
 		209676B924106A6E002956C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209676B824106A6E002956C6 /* SceneDelegate.swift */; };
 		209676BE24106A6E002956C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 209676BC24106A6E002956C6 /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 		209020152410A82B00484194 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		209020162410A82B00484194 /* AlbumInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInteractor.swift; sourceTree = "<group>"; };
 		2090201D2410BC3300484194 /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
+		209020242410F5F200484194 /* ConexionInternet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConexionInternet.swift; sourceTree = "<group>"; };
 		209676B324106A6E002956C6 /* DesafioBCI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioBCI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		209676B624106A6E002956C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		209676B824106A6E002956C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		209020232410F5DA00484194 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				209020242410F5F200484194 /* ConexionInternet.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		209676AA24106A6E002956C6 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +139,7 @@
 		209676B524106A6E002956C6 /* DesafioBCI */ = {
 			isa = PBXGroup;
 			children = (
+				209020232410F5DA00484194 /* Extension */,
 				209676E624106DAC002956C6 /* Get API */,
 				209676EC24106E58002956C6 /* Scenes */,
 				209676B624106A6E002956C6 /* AppDelegate.swift */,
@@ -360,6 +371,7 @@
 				209676E824106DC1002956C6 /* ObtenerDatos.swift in Sources */,
 				209020182410A82B00484194 /* AlbumWorker.swift in Sources */,
 				209676F724106E7E002956C6 /* BuscarRouter.swift in Sources */,
+				209020252410F5F200484194 /* ConexionInternet.swift in Sources */,
 				209676F524106E7E002956C6 /* BuscarPresenter.swift in Sources */,
 				2090201E2410BC3300484194 /* AlbumModel.swift in Sources */,
 				2090201C2410A82B00484194 /* AlbumInteractor.swift in Sources */,
