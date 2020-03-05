@@ -75,6 +75,8 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var numeroCanciones: UILabel!
     @IBOutlet weak var tableViewOutlet: UITableView!
     
+    @IBOutlet weak var imageAlbumWith: NSLayoutConstraint!
+    @IBOutlet weak var imageAlbumHeight: NSLayoutConstraint!
     
     // MARK: Variables
     var arrayAlbum = [AlbumModel]()
@@ -91,6 +93,11 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         
         loadInitialData()
+        
+        imageAlbumWith.constant     = 60
+        imageAlbumHeight.constant   = 60
+        
+        custom()
         
     }
     
@@ -158,6 +165,22 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             
             
+        }
+        
+    }
+    
+    // MARK: Custom
+    
+    func custom(){
+        
+        Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false) { (_) in
+            self.imageAlbumHeight.constant = 100
+            self.imageAlbumWith.constant = 100
+            
+            
+            UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseIn, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: nil)
         }
         
     }

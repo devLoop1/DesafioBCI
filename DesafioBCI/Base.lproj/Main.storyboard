@@ -202,6 +202,8 @@
                     </view>
                     <connections>
                         <outlet property="albumImage" destination="JJ1-Nb-wPC" id="fZa-1i-fiI"/>
+                        <outlet property="imageAlbumHeight" destination="yeF-Fc-cif" id="Otc-yG-oOG"/>
+                        <outlet property="imageAlbumWith" destination="vaf-6d-UEa" id="AKJ-Qy-ycx"/>
                         <outlet property="nombreAlbum" destination="CdF-DV-bpK" id="wkv-yo-EEY"/>
                         <outlet property="nombreArtista" destination="aas-eB-BcP" id="hrn-ZA-hui"/>
                         <outlet property="numeroCanciones" destination="aML-Rg-5Tn" id="aId-uf-lGv"/>
